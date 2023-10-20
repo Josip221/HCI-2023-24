@@ -4,28 +4,25 @@ User personas and informational architecture for a web shop selling supplement p
 
 # 1. User Personas
 
-> *Develop a 3 varying user personas for a new web application that sells supplement products*
-> 
+> _Develop a 3 varying user personas for a new web application that sells supplement products_
 
-![Untitled](Class-project%202%20514a9d0a8af2453280875f33b918b4a7/Untitled.png)
+![Untitled](not/Untitled.png)
 
-![Untitled](Class-project%202%20514a9d0a8af2453280875f33b918b4a7/Untitled%201.png)
+![Untitled](not/Untitled%201.png)
 
-![Untitled](Class-project%202%20514a9d0a8af2453280875f33b918b4a7/Untitled%202.png)
+![Untitled](not/Untitled%202.png)
 
-![Untitled](Class-project%202%20514a9d0a8af2453280875f33b918b4a7/Untitled%203.png)
+![Untitled](not/Untitled%203.png)
 
-![Untitled](Class-project%202%20514a9d0a8af2453280875f33b918b4a7/Untitled%204.png)
+![Untitled](not/Untitled%204.png)
 
-![Untitled](Class-project%202%20514a9d0a8af2453280875f33b918b4a7/Untitled%205.png)
+![Untitled](not/Untitled%205.png)
 
 # 2. **Information Architecture and Card Sorting**
 
-> *What is information architecture in UX design? What is a cart sorting method in UX design?*
-> 
+> _What is information architecture in UX design? What is a cart sorting method in UX design?_
 
-> *Propose a set of  card topics related to web page for supplement products*
-> 
+> _Propose a set of card topics related to web page for supplement products_
 
 Information architecture (IA) in UX design is the practice of organizing, structuring, and labeling content on a website or application to enhance user understanding and facilitate efficient navigation. It involves creating a clear hierarchy, categorizing content, and providing users with a logical and intuitive way to find information.
 
@@ -70,4 +67,4 @@ Card sorting is a user research method in UX design where participants organize 
 
 Sitemap created using gloomaps
 
-![Untitled](Class-project%202%20514a9d0a8af2453280875f33b918b4a7/Untitled%206.png)
+![Untitled](not/Untitled%206.png)
