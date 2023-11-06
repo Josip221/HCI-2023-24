@@ -4,7 +4,7 @@ User personas and informational architecture for a web shop selling supplement p
 
 # 1. User Personas
 
-> _Develop a 3 varying user personas for a new web application that sells supplement products_
+> _Develop 3 varying user personas for a new web application that sells supplement products_
 
 ![Untitled](not/Untitled.png)
 
