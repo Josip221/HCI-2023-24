@@ -26,46 +26,46 @@ export default function Page() {
       <div className="flex flex-col items-center justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Amino Whey (2300g)"}
             img={
               "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
             }
-            price={20}
+            price={24.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE ALL IN ONE (2200g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1705_cat_224800.jpg"
             }
-            price={20}
+            price={19.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Creatine (500g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://suplementi-spartanshop.rs/wp-content/uploads/2023/01/The-Nutrition-THE-Creatine-500gr.png"
             }
-            price={20}
+            price={19.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Explosion (500g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1989_cat_484310.jpg"
             }
-            price={20}
+            price={9.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Oatmeal (1000g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1810_cat_51556.jpg"
             }
-            price={20}
+            price={9.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Lady Pudding (500g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1965_cat_681056.jpg"
             }
-            price={20}
+            price={19.99}
           />
         </div>
         <div>{"Show more>"}</div>
@@ -74,46 +74,46 @@ export default function Page() {
       <div className="flex flex-col items-center justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Amino Whey (2300g)"}
             img={
               "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
             }
-            price={20}
+            price={24.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE ALL IN ONE (2200g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1705_cat_224800.jpg"
             }
-            price={20}
+            price={19.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Creatine (500g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://suplementi-spartanshop.rs/wp-content/uploads/2023/01/The-Nutrition-THE-Creatine-500gr.png"
             }
-            price={20}
+            price={19.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Explosion (500g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1989_cat_484310.jpg"
             }
-            price={20}
+            price={9.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Oatmeal (1000g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1810_cat_51556.jpg"
             }
-            price={20}
+            price={9.99}
           />
           <ItemCard
-            title={"Protein Powder"}
+            title={"THE Lady Pudding (500g)"}
             img={
-              "https://hr.the-nutrition.com/store/images/products/315_cat_144105.jpg"
+              "https://hr.the-nutrition.com/store/images/products/1965_cat_681056.jpg"
             }
-            price={20}
+            price={19.99}
           />
         </div>
         <div>{"Show more>"}</div>
