@@ -21,7 +21,7 @@ function Hamburger() {
       <div
         className={` ${
           isMenuOpen ? "absolute" : "hidden"
-        }  w-full top-10 left-0 bg-[#B0A695] h-30 z-10`}
+        }  w-full top-10 left-0 bg-[#007bff] h-30 z-10`}
       >
         <div className="flex flex-col justify-center items-center">
           <Link href="/products">Products</Link>

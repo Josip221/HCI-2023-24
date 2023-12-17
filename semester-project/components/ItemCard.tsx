@@ -1,18 +1,23 @@
 import React from "react";
 
 interface ItemCardProps {
+  image: string;
   title: string;
-  img: string;
   price: number;
+  weight: number;
 }
 
-function ItemCard({ title, img, price }: ItemCardProps) {
+function ItemCard({ image, title, price, weight }: ItemCardProps) {
   return (
-    <div className="border-solid border-[#776B5D] border-2 m-2 bg-white flex flex-col justify-center items-center p-5 text-xs">
-      <div>{title}</div>
-      <img className="w-64" src={img} alt="img" />
-      <div>{price}€</div>
-      <div>Add to Cart</div>
+    <div className="flex flex-col justify-center items-center border-2 border-[#6c757d] my-2 mx-5">
+      <img className=" h-60 object-contain " src={image} />
+      <div className="m-2">{title}</div>
+      <div className="text-[#6c757d]">{`${weight}kg`}</div>
+      <div className="relative ">
+        <span className="align-top  text-xs">€</span>
+        <span className="text-lg">{price}</span>
+        <span className="align-top text-xs">99</span>
+      </div>
     </div>
   );
 }

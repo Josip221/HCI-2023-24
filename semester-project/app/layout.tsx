@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="w-full h-10 text-xl text-white bg-[#B0A695] flex items-center ">
+        <nav className="w-full h-16 text-xl text-white bg-[#336688ff] flex items-center ">
           <Link className="mr-auto ml-5" href="/">
             GymRoo
           </Link>
@@ -32,7 +32,9 @@ export default function RootLayout({
           <Hamburger />
         </nav>
         {children}
-       
+        <footer className="flex w-full mt-auto h-48 bg-[#336688ff] text-white">
+          Footer
+        </footer>
       </body>
     </html>
   );

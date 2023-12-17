@@ -4,7 +4,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define your color scheme */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #ffc107;
+  --lapis-lazuli: #336688ff;
+  --xanthous: #eab64cff;
+  --eerie-black: #1c1b1aff;
+  --cal-poly-green: #265138ff;
+  --eerie-black-2: #232424ff;
+}
+
 body {
   font-family: "Krona One" !important;
-  background-color: #f3eeea;
+  /* background-color: var(--primary-color);
+  color: var(--secondary-color); */
 }
+
+/* Use the color variables in your styles */
+/* a {
+  color: var(--accent-color);
+} */
+
+/* Additional styles... */
