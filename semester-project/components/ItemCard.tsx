@@ -1,4 +1,6 @@
 import React from "react";
+import Rating from "@mui/material/Rating";
+import Spinner from "@/components/Spinner";
 
 interface ItemCardProps {
   image: string;
@@ -8,12 +10,17 @@ interface ItemCardProps {
 }
 
 function ItemCard({ image, title, price, weight }: ItemCardProps) {
+  const randomNum = Math.random() * (4.8 - 2.5) + 2.5;
   return (
-    <div className="flex flex-col justify-center items-center border-2 border-[#6c757d] my-2 mx-5">
-      <img className=" h-60 object-contain " src={image} />
+    <div className="flex flex-col justify-center items-center border-2 border-[#6c757d] my-2 mx-5 p-3">
+      <img
+        className="border-2 border-[#6c757d] h-60 object-contain "
+        src={image}
+      />
       <div className="m-2">{title}</div>
-      <div className="text-[#6c757d]">{`${weight}kg`}</div>
-      <div className="relative ">
+
+      <Rating name="read-only" value={randomNum} readOnly />
+      <div className="m-2">
         <span className="align-top  text-xs">€</span>
         <span className="text-lg">{price}</span>
         <span className="align-top text-xs">99</span>

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { useContext } from "@/context/context";
 import Spinner from "@/components/Spinner";
+
 require("dotenv").config();
 
 const space_id = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
@@ -26,6 +27,18 @@ interface Category {
   };
 }
 
+interface Product {
+  title: string;
+  image: {
+    title: string;
+    description: string;
+    contentType: string;
+    url: string;
+  };
+  weight: number;
+  price: number;
+}
+
 function Page({ params }: pageProps) {
   const [categories, setCategories] = useState<Category>({
     title: "",
@@ -34,9 +47,16 @@ function Page({ params }: pageProps) {
 
   const query = `
   query {
-      productCollection {
+      productCollection(where: {category: "${
+        params.category
+      }" }, order: [price_ASC]) {
         items {
+          sys {
+            id
+          }
           title
+          price
+          weight
           image {
             title
             description
@@ -61,7 +81,7 @@ function Page({ params }: pageProps) {
     }
 `;
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const { isLoading, setIsLoading } = useContext();
   async function fetchGraphQL(query: string) {
     return fetch(
@@ -85,6 +105,7 @@ function Page({ params }: pageProps) {
         setProducts(data.data.productCollection.items);
         setCategories(data.data.categoryCollection.items[0]);
         setIsLoading(false);
+        console.log("Contentful data:", data);
         return data;
       } catch (error) {
         setIsLoading(false);
@@ -106,46 +127,20 @@ function Page({ params }: pageProps) {
               image={categories.image.url}
               i={1}
               title={categories.title}
+              style="object-bottom"
             />
           )}
           <SearchBar placeholder="Search..." onChange={() => {}} />
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            <ItemCard
-              image="https://m.media-amazon.com/images/I/716EUYPGSGL._AC_SL1500_.jpg"
-              title="IPF Weight Plates"
-              weight={20}
-              price={499}
-            />
-            <ItemCard
-              image="https://m.media-amazon.com/images/I/716EUYPGSGL._AC_SL1500_.jpg"
-              title="IPF Weight Plates"
-              weight={20}
-              price={499}
-            />
-            <ItemCard
-              image="https://m.media-amazon.com/images/I/716EUYPGSGL._AC_SL1500_.jpg"
-              title="IPF Weight Plates"
-              weight={20}
-              price={499}
-            />
-            <ItemCard
-              image="https://m.media-amazon.com/images/I/716EUYPGSGL._AC_SL1500_.jpg"
-              title="IPF Weight Plates"
-              weight={20}
-              price={499}
-            />
-            <ItemCard
-              image="https://m.media-amazon.com/images/I/716EUYPGSGL._AC_SL1500_.jpg"
-              title="IPF Weight Plates"
-              weight={20}
-              price={499}
-            />
-            <ItemCard
-              image="https://m.media-amazon.com/images/I/716EUYPGSGL._AC_SL1500_.jpg"
-              title="IPF Weight Plates"
-              weight={20}
-              price={499}
-            />
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+            {products.map((product, index) => (
+              <ItemCard
+                key={index}
+                image={product.image.url}
+                title={product.title}
+                weight={product.weight}
+                price={product.price}
+              />
+            ))}
           </div>
         </>
       )}

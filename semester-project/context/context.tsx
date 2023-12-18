@@ -6,6 +6,8 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface contextProps {
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  cart: string[];
+  setCart: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 const MyContext = createContext<contextProps | undefined>(undefined);
@@ -16,9 +18,10 @@ interface MyProviderProps {
 
 const MyProvider = ({ children }: MyProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [cart, setCart] = useState<string[]>([]);
 
   return (
-    <MyContext.Provider value={{ isLoading, setIsLoading }}>
+    <MyContext.Provider value={{ isLoading, setIsLoading, cart, setCart }}>
       {children}
     </MyContext.Provider>
   );

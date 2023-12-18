@@ -21,13 +21,13 @@ function Hamburger() {
       <div
         className={` ${
           isMenuOpen ? "absolute" : "hidden"
-        }  w-full top-10 left-0 bg-[#007bff] h-30 z-10`}
+        }  w-full top-10 left-0 bg-[#336688ff] h-30 z-10`}
       >
         <div className="flex flex-col justify-center items-center">
           <Link href="/products">Products</Link>
           <Link href="/cart">Cart</Link>
           <Link href="/about">About Us</Link>
-          <Link href="/login">Sign In</Link>
+          <Link href="/login">Log In</Link>
         </div>
       </div>
     </div>

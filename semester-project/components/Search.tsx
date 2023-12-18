@@ -6,7 +6,7 @@ interface SearchBarProps {
 }
 const SearchBar = ({ placeholder, onChange }: SearchBarProps) => {
   return (
-    <div className="relative w-64 mt-5">
+    <div className="relative w-64 m-5">
       <input
         type="text"
         placeholder={placeholder || "Search..."}
