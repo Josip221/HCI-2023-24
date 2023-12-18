@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import Hamburger from "@/components/Hamburger";
+import { ContextProvider } from "@/context/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,24 +19,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <nav className="w-full h-16 text-xl text-white bg-[#336688ff] flex items-center ">
-          <Link className="mr-auto ml-5" href="/">
-            GymRoo
-          </Link>
-          <div className="hidden md:flex w-2/3 lg:flex lg:w-1/2 items-center justify-evenly">
-            <Link href="/products">Products</Link>
-            <Link href="/cart">Cart</Link>
-            <Link href="/about">About Us</Link>
-            <Link href="/login">Sign In</Link>
+      <ContextProvider>
+        <body className={`${inter.className} flex flex-col min-h-screen`}>
+          <nav className="w-full h-16 text-xl text-white bg-[#336688ff] flex items-center ">
+            <Link className="mr-auto ml-5" href="/">
+              GymRoo
+            </Link>
+            <div className="hidden md:flex w-2/3 lg:flex lg:w-1/2 items-center justify-evenly">
+              <Link href="/products">Products</Link>
+              <Link href="/cart">Cart</Link>
+              <Link href="/about">About Us</Link>
+              <Link href="/login">Sign In</Link>
+            </div>
+            <Hamburger />
+          </nav>
+          <div className="flex flex-1 w-full justify-center items-start">
+            {children}
           </div>
-          <Hamburger />
-        </nav>
-        {children}
-        <footer className="flex w-full mt-auto h-48 bg-[#336688ff] text-white">
-          Footer
-        </footer>
-      </body>
+          <footer className="flex w-full h-48 bg-[#336688ff] text-white">
+            Footer
+          </footer>
+        </body>
+      </ContextProvider>
     </html>
   );
 }

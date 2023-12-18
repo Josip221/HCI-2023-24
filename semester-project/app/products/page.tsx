@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import ItemSplash from "@/components/ItemSplash";
+import { useContext } from "@/context/context";
+import Spinner from "@/components/Spinner";
 
 require("dotenv").config();
 
@@ -35,6 +37,7 @@ interface Category {
 
 export default function Page() {
   const [categories, setCategories] = useState<Category[]>([]);
+  const { isLoading, setIsLoading } = useContext();
 
   async function fetchGraphQL(query: string) {
     return fetch(
@@ -52,12 +55,15 @@ export default function Page() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const response = await fetchGraphQL(query);
         const data = await response.json();
         setCategories(data.data.categoryCollection.items);
+        setIsLoading(false);
         return data;
       } catch (error) {
+        setIsLoading(false);
         console.error("Error fetching Contentful data:", error);
         return null;
       }
@@ -67,16 +73,20 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      {categories.map((category, i) => (
-        <ItemSplash
-          key={i}
-          image={category.image.url}
-          title={category.title}
-          i={i}
-          link={"/products/" + category.title.toLowerCase()}
-        />
-      ))}
+    <div className="flex w-full flex-col justify-center items-center">
+      <Spinner />
+
+      {isLoading
+        ? ""
+        : categories.map((category, i) => (
+            <ItemSplash
+              key={i}
+              image={category.image.url}
+              title={category.title}
+              i={i}
+              link={"/products/" + category.title.toLowerCase()}
+            />
+          ))}
     </div>
   );
 }
