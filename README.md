@@ -1,6 +1,6 @@
 # Semester Project
 
-Latest Vercel Deployment: gym-roo.vercel.app
+Latest Vercel Deployment: https://gym-roo.vercel.app
 
 ## WEEKLY PROGRESS, STATUS AND PROBLEMS, 1/4
 
