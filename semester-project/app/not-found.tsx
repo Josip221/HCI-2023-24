@@ -3,6 +3,10 @@ import ItemSplash from "@/components/ItemSplash";
 import NavigateButton from "@/components/NavigateButton";
 
 const NotFound = () => {
+  // change document title
+  if (typeof window !== "undefined") {
+    document.title = "GymRoo - Not Found";
+  }
   return (
     <div className="flex flex-col w-full items-center justify-start h-screen">
       <ItemSplash

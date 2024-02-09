@@ -4,30 +4,17 @@ import ItemSplash from "@/components/ItemSplash";
 import { useContext } from "@/context/context";
 import Spinner from "@/components/Spinner";
 
+import { fetchGraphQL } from "@/utils/networking/contentfulFetch";
+
 require("dotenv").config();
 
 const space_id = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const access_token = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 
-const query = `
-query {
-  categoryCollection {
-    items {
-      title
-      image {
-        title
-        description
-        contentType
-        url
-      }
-    }
-  }
-}
-`;
-
 interface Category {
   title: string;
   image: {
+    id: number;
     title: string;
     description: string;
     contentType: string;
@@ -39,33 +26,39 @@ export default function Page() {
   const [categories, setCategories] = useState<Category[]>([]);
   const { isLoading, setIsLoading } = useContext();
 
-  async function fetchGraphQL(query: string) {
-    return fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${space_id}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${access_token}`,
-        },
-        body: JSON.stringify({ query }),
-      }
-    );
+  if (typeof window !== "undefined") {
+    document.title = "GymRoo - Products";
   }
+  const query = `
+    query {
+      categoryCollection {
+        items {
+          sys {
+            id
+          }
+          title
+          image {
+            title
+            description
+            contentType
+            url
+          }
+        }
+      }
+    }
+    `;
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetchGraphQL(query);
+        const response = await fetchGraphQL(query, space_id, access_token);
         const data = await response.json();
         setCategories(data.data.categoryCollection.items);
-        setIsLoading(false);
-        return data;
       } catch (error) {
-        setIsLoading(false);
         console.error("Error fetching Contentful data:", error);
-        return null;
+      } finally {
+        setIsLoading(false);
       }
     };
 

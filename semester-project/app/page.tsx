@@ -5,6 +5,13 @@ import ItemSplash from "@/components/ItemSplash";
 
 export default function Page() {
   const { isLoading } = useContext();
+
+  // change document title
+
+  if (typeof window !== "undefined") {
+    document.title = "GymRoo - Home";
+  }
+
   return (
     <div className="flex flex-col justify-center items-center ">
       {isLoading ? (

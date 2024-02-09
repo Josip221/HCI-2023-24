@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { useContext } from "@/context/context";
 import Spinner from "@/components/Spinner";
+import { fetchGraphQL } from "@/utils/networking/contentfulFetch";
 
 require("dotenv").config();
 
@@ -40,6 +41,11 @@ interface Product {
 }
 
 function Page({ params }: pageProps) {
+  if (typeof window !== "undefined") {
+    document.title =
+      "GymRoo - " + params.category[0].toUpperCase() + params.category.slice(1);
+  }
+
   const [categories, setCategories] = useState<Category>({
     title: "",
     image: { title: "", description: "", contentType: "", url: "" },
@@ -69,6 +75,9 @@ function Page({ params }: pageProps) {
         params.category[0].toUpperCase() + params.category.slice(1)
       }" }) {
         items {
+          sys {
+            id
+          }
           title
           image {
             title
@@ -83,34 +92,21 @@ function Page({ params }: pageProps) {
 
   const [products, setProducts] = useState<Product[]>([]);
   const { isLoading, setIsLoading } = useContext();
-  async function fetchGraphQL(query: string) {
-    return fetch(
-      `https://graphql.contentful.com/content/v1/spaces/${space_id}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${access_token}`,
-        },
-        body: JSON.stringify({ query }),
-      }
-    );
-  }
+
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
-        setIsLoading(true);
-        const response = await fetchGraphQL(query);
+        const response = await fetchGraphQL(query, space_id, access_token);
         const data = await response.json();
+
         setProducts(data.data.productCollection.items);
         setCategories(data.data.categoryCollection.items[0]);
-        setIsLoading(false);
-        console.log("Contentful data:", data);
-        return data;
+        
       } catch (error) {
+        console.log("Error fetching Contentful data:", error);
+      } finally {
         setIsLoading(false);
-        console.error("Error fetching Contentful data:", error);
-        return null;
       }
     };
 
@@ -134,6 +130,7 @@ function Page({ params }: pageProps) {
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             {products.map((product, index) => (
               <ItemCard
+                baseUrl={"/products/" + params.category + "/"}
                 key={index}
                 image={product.image.url}
                 title={product.title}

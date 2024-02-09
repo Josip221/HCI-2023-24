@@ -1,13 +1,19 @@
 "use client";
-// context.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-// Define types for your context
+interface ItemCardProps {
+  image: string;
+  title: string;
+  price: number;
+  weight: number;
+}
 interface contextProps {
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  cart: string[];
-  setCart: React.Dispatch<React.SetStateAction<string[]>>;
+  cart: ItemCardProps[];
+  setCart: React.Dispatch<React.SetStateAction<ItemCardProps[]>>;
+  addToCart: (item: ItemCardProps) => void;
+  removeItemFromCart: (item: ItemCardProps) => void;
 }
 
 const MyContext = createContext<contextProps | undefined>(undefined);
@@ -18,10 +24,28 @@ interface MyProviderProps {
 
 const MyProvider = ({ children }: MyProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [cart, setCart] = useState<string[]>([]);
+  const [cart, setCart] = useState<ItemCardProps[]>([]);
+
+  const addToCart = (item: ItemCardProps) => {
+    setCart([...cart, item]);
+  };
+
+  const removeItemFromCart = (item: ItemCardProps) => {
+    const newCart = cart.filter((cartItem) => cartItem.title !== item.title);
+    setCart(newCart);
+  };
 
   return (
-    <MyContext.Provider value={{ isLoading, setIsLoading, cart, setCart }}>
+    <MyContext.Provider
+      value={{
+        isLoading,
+        setIsLoading,
+        cart,
+        setCart,
+        addToCart,
+        removeItemFromCart,
+      }}
+    >
       {children}
     </MyContext.Provider>
   );

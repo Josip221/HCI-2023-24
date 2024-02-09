@@ -6,6 +6,10 @@ import ItemSplash from "@/components/ItemSplash";
 
 function Page() {
   const { cart, setCart } = useContext();
+
+  if (typeof window !== "undefined") {
+    document.title = "GymRoo - Cart";
+  }
   return (
     <div className=" flex flex-col justify-center items-center gap-5 w-full">
       {cart.length || (

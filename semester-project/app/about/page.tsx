@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
 import ItemSplash from "@/components/ItemSplash";
 
-function page() {
+function Page() {
+  if (typeof window !== "undefined") {
+    document.title = "GymRoo - About";
+  }
   return (
     <div className="w-full">
       <ItemSplash
@@ -87,4 +91,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
