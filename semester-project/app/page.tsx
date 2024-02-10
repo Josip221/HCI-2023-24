@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useContext } from "@/context/context";
 import ItemSplash from "@/components/ItemSplash";
+import Image from "next/image";
+import Rating from "@mui/material/Rating";
 
 export default function Page() {
   const { isLoading } = useContext();

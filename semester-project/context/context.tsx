@@ -2,10 +2,16 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface ItemCardProps {
-  image: string;
   title: string;
   price: number;
   weight: number;
+  description: string;
+  image: {
+    title: string;
+    description: string;
+    contentType: string;
+    url: string;
+  };
 }
 interface contextProps {
   isLoading: boolean;
