@@ -32,7 +32,7 @@ interface Product {
 }
 
 function Page({ params }: PageProps) {
-  const { isLoading, setIsLoading } = useContext();
+  const { isLoading, setIsLoading, addToCart } = useContext();
   const [product, setProduct] = useState<Product>({} as Product);
 
   const productName = params.product.replace(/-/g, " ");
@@ -69,8 +69,6 @@ function Page({ params }: PageProps) {
         const response = await fetchGraphQL(query, space_id, access_token);
         const data = await response.json();
 
-
-        
         setProduct(data.data.productCollection.items[0]);
       } catch (error) {
         console.error("Error fetching Contentful data:", error);
@@ -85,16 +83,32 @@ function Page({ params }: PageProps) {
     <div className="flex flex-col justify-center items-center w-full ">
       <Spinner />
       {!isLoading && product && product.image && (
-        <>
-          {product.title}
-          <Price price={product.price} />
-
-          <img
-            className="border-2 border-[#6c757d] h-60 object-contain bg-white"
-            src={product.image.url}
-          />
-          <div>{product.description} </div>
-        </>
+        <div
+          className="grid 
+         grid-rows-[120px, auto] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grild-cols-4 gap-5"
+        >
+          {/* #row 1 */}
+          <div className="flex flex-col justify-center items-center md:col-start-1 md:col-end-3">
+            <div className="mt-5 text-2xl">{product.title}</div>
+            <Price price={product.price} />
+          </div>
+          {/* row2 */}
+          <div className="flex flex-col justify-center items-center w-full md:row-start-2 ">
+            <img
+              className="border-2 border-[#6c757d] h-96 object-contain bg-white md:ml-10"
+              src={product.image.url}
+            />
+          </div>
+          {/* row3 */}
+          <div className="flex flex-col justify-center items-center mb-10 md:row-start-2  md:justify-start md:mb-0">
+            <div className="w-2/3 my-5 font-sans md:mt-0 md:mb-8">
+              {product.description}{" "}
+            </div>
+            <div className="bg-[#265138ff] text-white p-2 rounded w-[200px] mt-auto">
+              Add to cart
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
