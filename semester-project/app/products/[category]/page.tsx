@@ -1,7 +1,6 @@
 "use client";
 import ItemCard from "@/components/ItemCard";
 import ItemSplash from "@/components/ItemSplash";
-import SearchBar from "@/components/Search";
 import { useState, useEffect } from "react";
 import React from "react";
 import { useContext } from "@/context/context";
@@ -102,9 +101,9 @@ function Page({ params }: pageProps) {
 
         setProducts(data.data.productCollection.items);
         setCategories(data.data.categoryCollection.items[0]);
-        
       } catch (error) {
         console.log("Error fetching Contentful data:", error);
+        window.location.href = "/not-found";
       } finally {
         setIsLoading(false);
       }
@@ -126,7 +125,7 @@ function Page({ params }: pageProps) {
               style="object-bottom"
             />
           )}
-          <SearchBar placeholder="Search..." onChange={() => {}} />
+          {/* <SearchBar placeholder="Search..." onChange={() => {}} /> */}
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
             {products.map((product, index) => (
               <ItemCard

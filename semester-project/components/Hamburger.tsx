@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import CartNav from "./CartNav";
 
 function Hamburger() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ function Hamburger() {
       >
         <div className="flex flex-col justify-center items-center ">
           <Link href="/products">Products</Link>
-          <Link href="/cart">Cart</Link>
+          <CartNav />
           <Link href="/about">About Us</Link>
           <Link href="/login">Log In</Link>
         </div>

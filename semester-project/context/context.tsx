@@ -2,6 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface ItemCardProps {
+  amount: number;
   title: string;
   price: number;
   weight: number;
@@ -20,6 +21,9 @@ interface contextProps {
   setCart: React.Dispatch<React.SetStateAction<ItemCardProps[]>>;
   addToCart: (item: ItemCardProps) => void;
   removeItemFromCart: (item: ItemCardProps) => void;
+  emptyCart: () => void;
+  notifyLogin: boolean;
+  setNotifyLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const MyContext = createContext<contextProps | undefined>(undefined);
@@ -29,11 +33,27 @@ interface MyProviderProps {
 }
 
 const MyProvider = ({ children }: MyProviderProps) => {
+  const [notifyLogin, setNotifyLogin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [cart, setCart] = useState<ItemCardProps[]>([]);
 
+  const emptyCart = () => {
+    setCart([]);
+  };
+
   const addToCart = (item: ItemCardProps) => {
-    setCart([...cart, item]);
+    const existingItem = cart.find((cartItem) => cartItem.title === item.title);
+    if (existingItem) {
+      const updatedCart = cart.map((cartItem) => {
+        if (cartItem.title === item.title) {
+          return { ...cartItem, amount: cartItem.amount + item.amount };
+        }
+        return cartItem;
+      });
+      setCart(updatedCart);
+    } else {
+      setCart([...cart, item]);
+    }
   };
 
   const removeItemFromCart = (item: ItemCardProps) => {
@@ -50,6 +70,9 @@ const MyProvider = ({ children }: MyProviderProps) => {
         setCart,
         addToCart,
         removeItemFromCart,
+        emptyCart,
+        notifyLogin,
+        setNotifyLogin,
       }}
     >
       {children}

@@ -54,9 +54,14 @@ export default function Page() {
       try {
         const response = await fetchGraphQL(query, space_id, access_token);
         const data = await response.json();
+
+        if (data.data.categoryCollection.items <= 0) {
+          throw new Error("No data on Contentful");
+        }
         setCategories(data.data.categoryCollection.items);
       } catch (error) {
         console.error("Error fetching Contentful data:", error);
+        throw error;
       } finally {
         setIsLoading(false);
       }

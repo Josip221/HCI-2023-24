@@ -1,18 +1,38 @@
 "use client";
 import Link from "next/link";
 import { useContext } from "@/context/context";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ItemSplash from "@/components/ItemSplash";
-import Image from "next/image";
-import Rating from "@mui/material/Rating";
+import { useEffect } from "react";
 
 export default function Page() {
-  const { isLoading } = useContext();
+  const { isLoading, notifyLogin, setNotifyLogin } = useContext();
 
   // change document title
 
   if (typeof window !== "undefined") {
     document.title = "GymRoo - Home";
   }
+
+  // check for local storage isLoggedIn === true
+  // if not, redirect to login page
+  useEffect(() => {
+    if (localStorage.getItem("isLoggedIn") === "true" && !notifyLogin) {
+      setNotifyLogin(true);
+
+      toast.success(`Successfully logged in`, {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }, []);
 
   return (
     <div className="flex flex-col justify-center items-center ">

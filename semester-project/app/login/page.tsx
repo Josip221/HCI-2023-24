@@ -22,6 +22,7 @@ const Page = () => {
         theme: "light",
       });
     } else {
+      localStorage.setItem("isLoggedIn", "true"); // Add this line
       window.location.href = "/";
     }
   };

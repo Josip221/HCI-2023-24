@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Rating from "@mui/material/Rating";
 import Link from "next/link";
 import Price from "./Price";
@@ -14,6 +14,7 @@ interface ItemCardProps {
 function ItemCard({ baseUrl, image, title, price, weight }: ItemCardProps) {
   const randomNum = Math.random() * (4.8 - 2.5) + 2.5;
 
+  const randomReviews = useMemo(() => Math.floor(Math.random() * 100), []);
   const urlNew = title.trim().replaceAll(" ", "-");
 
   return (
@@ -24,8 +25,10 @@ function ItemCard({ baseUrl, image, title, price, weight }: ItemCardProps) {
           src={image}
         />
         <div className="m-2">{title}</div>
-
-        <Rating name="read-only" value={randomNum} readOnly />
+        <div className="flex gap-1">
+          <Rating name="read-only" value={randomNum} readOnly />
+          <div className="font-thin font-sans">{`(${randomReviews} reviews)`}</div>
+        </div>
         <Price price={price} />
       </div>
     </Link>
