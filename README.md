@@ -2,6 +2,8 @@
 
 **Latest Vercel Deployment:** [gym-roo.vercel.app](https://gym-roo.vercel.app)
 
+**Semester report:** [report](https://www.notion.so/josip221/HCI-Report-908a1ed27cf7485fb1257938b0247427)
+
 ## WEEKLY PROGRESS, STATUS AND PROBLEMS, 1/4
 
 - Redo of entire page design
