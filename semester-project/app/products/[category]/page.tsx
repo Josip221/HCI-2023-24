@@ -54,7 +54,7 @@ function Page({ params }: pageProps) {
   query {
       productCollection(where: {category: "${
         params.category
-      }" }, order: [price_ASC]) {
+      }" }, order: [price_DESC]) {
         items {
           sys {
             id
@@ -98,6 +98,13 @@ function Page({ params }: pageProps) {
       try {
         const response = await fetchGraphQL(query, space_id, access_token);
         const data = await response.json();
+
+        if (
+          data.data.productCollection.items.length <= 0 ||
+          data.data.categoryCollection.items.length <= 0
+        ) {
+          throw new Error("empty");
+        }
 
         setProducts(data.data.productCollection.items);
         setCategories(data.data.categoryCollection.items[0]);

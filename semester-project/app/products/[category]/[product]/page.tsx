@@ -7,6 +7,7 @@ import Price from "@/components/Price";
 import { toast } from "react-toastify";
 import Rating from "@mui/material/Rating";
 import "react-toastify/dist/ReactToastify.css";
+import ItemSplash from "@/components/ItemSplash";
 
 require("dotenv").config();
 
@@ -125,8 +126,18 @@ function Page({ params }: PageProps) {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full ">
+    <div className="flex flex-col justify-center items-center w-full mb-10">
       <Spinner />
+      {!isLoading && product && product.image && (
+        <ItemSplash
+          i={0}
+          title={productName}
+          image={
+            "https://plus.unsplash.com/premium_photo-1686600168384-54f395fba1a5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGJhY2tncm91bmQlMjBibGFja3xlbnwwfHwwfHx8MA%3D%3D"
+          }
+        />
+      )}
+
       {!isLoading && product && product.image && (
         <div
           className="grid 
@@ -137,6 +148,11 @@ function Page({ params }: PageProps) {
             <div className="mt-5 text-2xl flex justify-center items-center text-center">
               {product.title}
             </div>
+            <div className="flex gap-2 mt-2">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwUlEQVR4nO3TsQrCQBCE4V8LQevUqQNapREkgoGgpQiRmCcyPmjEt1AOtoobMTqFhQMLxx43X3XwI5kAF+AKtEBjO1ka4N6ZsxJorXQFZHYOO1luVhrK13YOu8EZA0ugBOqBU9rb0NGbxQfFdWfmr4BCABSvgL0A2PeVj4CTADhZ11NmgvLaZuoBkRCIPCAWArEHJEIg8YBUCKQekAmBzAN2QmDrAQchcPCAoxAoPSAXAnnfTw4X1RfFFbCxrn94Kw/z1Xbgx4vdnAAAAABJRU5ErkJggg==" />
+              {product.weight} kg
+            </div>
+
             <div className="self-center m-2 flex gap-1 items-center">
               <span className="self-center text-md font-thin font-sans">
                 {randomNum.toFixed(1)}
@@ -173,7 +189,7 @@ function Page({ params }: PageProps) {
               />
               <div
                 onClick={handleAddToCart}
-                className="bg-[#336688ff] text-white p-2 rounded   hover:cursor-pointer"
+                className="bg-[#336688ff] hover:bg-blue-600 text-white p-2 rounded   hover:cursor-pointer"
               >
                 Add to cart
               </div>

@@ -56,8 +56,8 @@ export default function Page() {
           >
             Browse Products
           </Link>
-          <div className="flex flex-col p-10 gap-3 md:w-2/3">
-            <img src="https://images.unsplash.com/photo-1517963628607-235ccdd5476c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+          <div className="flex flex-col p-10 gap-4 md:w-2/3">
+            <img alt="splash" src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGd5bXxlbnwwfHwwfHx8MA%3D%3D" />
             <h1 className="text-xl md:text-2xl font-bold ">
               Choice of Champions
             </h1>
@@ -68,19 +68,22 @@ export default function Page() {
               equipment in achieving fitness goals.
             </div>
 
-            <div className="bg-[#336688ff] w-fit rounded-md px-4 py-2 text-white hover:bg-blue-600 focus:border-blue-300">
+            {/* <div className="bg-[#336688ff] w-fit rounded-md px-4 py-2 text-white hover:bg-blue-600 focus:border-blue-300">
               <Link href="/about">Learn More</Link>
-            </div>
+            </div> */}
           </div>
-          <div className="flex flex-col p-10 gap-3 md:w-2/3">
-            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+          <div className="flex flex-col p-10 gap-4 md:w-2/3">
+            <img
+              alt="splash"
+              src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            />
             <h1 className="text-xl md:text-2xl font-bold ">A Stronger World</h1>
             <div className="text-xl font-normal font-sans ">
               Elevate your fitness journey with GymRoo. Explore our collection
               of gym plates and start achieving your fitness goals today.
               Unleash the power within you - one plate at a time!
             </div>
-            <div className="bg-[#336688ff] w-fit rounded-md px-4 py-2 text-white hover:bg-blue-600 focus:border-blue-300">
+            <div className="self-center bg-[#336688ff] w-fit rounded-md px-4 py-2 text-white hover:bg-blue-600 focus:border-blue-300">
               <Link href="/about">Learn More</Link>
             </div>
           </div>

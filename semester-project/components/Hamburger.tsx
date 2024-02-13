@@ -1,13 +1,21 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import CartNav from "./CartNav";
+import SearchBarNav from "./SearchBarNav";
+import { usePathname } from "next/navigation";
 
 function Hamburger() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const pathname = usePathname();
+  useEffect(() => {
+    console.log(`Route changed to: ${pathname}`);
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <div className=" hover:cursor-pointer">
@@ -22,9 +30,10 @@ function Hamburger() {
       <div
         className={` ${
           isMenuOpen ? "absolute" : "hidden"
-        }  flex flex-col justify-center items-center w-full top-15 left-0 bg-[#336688ff] h-40 z-10 `}
+        }  flex flex-col justify-center items-center w-full top-[50px] left-0 bg-[#336688ff] h-48 z-10 `}
       >
-        <div className="flex flex-col justify-center items-center ">
+        <div className="flex flex-col justify-center items-center gap-1 ">
+          <SearchBarNav hidden={false} />
           <Link href="/products">Products</Link>
           <CartNav />
           <Link href="/about">About Us</Link>
